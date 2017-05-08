@@ -1,0 +1,82 @@
+package com.finalProject.mappin.community.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.finalProject.mappin.community.model.service.CommentsService;
+import com.finalProject.mappin.community.model.service.CommunityService;
+import com.finalProject.mappin.community.model.service.Community_imgService;
+import com.finalProject.mappin.community.model.service.LikesService;
+import com.finalProject.mappin.community.model.service.ScrapinService;
+import com.finalProject.mappin.community.model.vo.Comments;
+import com.finalProject.mappin.community.model.vo.Community;
+import com.finalProject.mappin.community.model.vo.Community_img;
+import com.finalProject.mappin.community.model.vo.Likes;
+
+@Controller("community")
+public class CommunityController {
+
+	@Autowired
+	private CommunityService communityService;
+	private LikesService likesService;
+	private Community_imgService community_imgService;
+	private CommentsService commentsService;
+	
+	@RequestMapping("selectList")
+	private ModelAndView selectList(ModelAndView mv){
+		int currentPage = 0;
+		int limit = 0;
+		List<Community> list = communityService.selectList(currentPage, limit);
+		List<Community_img> imglist = null;
+		for (int i = 0; i < list.size(); i++) {
+			Community_img img = community_imgService.detail(list.get(i).getCommunity_id());
+			imglist.add(img);
+		}
+		mv.addObject("list", list);
+		mv.addObject("imglist", imglist);
+		mv.setViewName("community/cmmunity");
+		return mv;
+	}
+	@RequestMapping("detail")
+	private ModelAndView detail(ModelAndView mv, HttpRequest request, ModelMap modelMap){
+		Community community = communityService.detail(request);
+		Community_img community_img = community_imgService.detail(community.getCommunity_id());
+		int likes = likesService.detail(community.getCommunity_id());
+		List<Comments> comments = commentsService.selectList(community.getCommunity_id());
+		mv.addObject("community", community);
+		mv.addObject("community_img", community_img);
+		mv.addObject("likes", likes);
+		mv.addObject("comments", comments);
+		mv.setViewName("community/cmmunityDetail");
+		return mv;
+	}
+	@RequestMapping("insert")
+	private ModelAndView insert(ModelAndView mv, Community community,  Community_img community_img){
+		int result1 = communityService.insert(community);
+		int result2 = community_imgService.insert(community_img);
+		mv.setViewName("community/cmmunity");
+		return mv;
+	}
+	@RequestMapping("delete")
+	private ModelAndView delete(ModelAndView mv, Community community){
+		int result = communityService.delete(community.getCommunity_id());
+		if(result>0)
+			mv.setViewName("community/community");
+		return mv;
+	}
+	@RequestMapping("update")
+	private ModelAndView update(ModelAndView mv, Community community, Community_img community_img){
+		int result1 = communityService.update(community);
+		int result2 = community_imgService.update(community_img);
+		if(result1>0 && result2>0)
+			mv.setViewName("community/community");
+		return mv;
+	}
+	
+}
