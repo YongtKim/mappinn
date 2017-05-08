@@ -20,7 +20,7 @@ public class ScrapinController {
 	@RequestMapping("selectList")
 	public ModelAndView selectList(ModelAndView mv, Member member){
 		List<Scrapin> list= scrapinService.selectList(member.getmemberid);
-		
+		System.out.println("d");
 		return mv;	
 	}
 	
