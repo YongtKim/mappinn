@@ -1,5 +1,7 @@
 package com.finalProject.mappin.community.model.service;
 
+import java.util.List;
+
 import com.finalProject.mappin.community.model.vo.Community_img;
 
 public interface Community_imgService {
@@ -9,5 +11,7 @@ public interface Community_imgService {
 	int insert(Community_img community_img);
 
 	int update(Community_img community_img);
+
+	List<Community_img> detailList(int community_id);
 
 }

@@ -10,7 +10,7 @@ public interface CommunityService {
 
 	List<Community> selectList(int currentPage, int limit);
 
-	Community detail(HttpRequest request);
+	Community detail(int community_id);
 
 	int insert(Community community);
 

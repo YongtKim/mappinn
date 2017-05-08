@@ -1,49 +1,55 @@
 package com.finalProject.mappin.member.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.finalProject.mappin.member.model.dao.MemberDao;
 import com.finalProject.mappin.member.model.vo.Member;
 
-@Service
+@Service("memberService")
+@Transactional
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	MemberDao memberDao;
 
 	@Override
-	public Member loginCheck(Member vo) {
-		return memberDao.loginCheck(vo);
+	public Member loginCheck(Member member) {
+		return memberDao.loginCheck(member);
 	}
 
 	@Override
-	public Member logOut(Member vo){
-		return memberDao.logOut(vo);
+	public Member logOut(Member member) {
+		return memberDao.logOut(member);
 	}
-	
+
 	@Override
-	public Member selectList(Member vo){
-		return memberDao.selectList(vo);
+	public List<Member> selectList() {
+		return memberDao.selectList();
 	}
-	
+
 	@Override
-	public Member insert(Member vo){
-		return memberDao.insert(vo);
+	public Member detail(String member_id) {
+		return memberDao.detail(member_id);
 	}
-	
+
 	@Override
-	public Member detail(Member vo){
-		return memberDao.detail(vo);
+	public int insert(Member member) {
+		return memberDao.insert(member);
 	}
-	
+
 	@Override
-	public Member delete(Member vo){
-		return memberDao.delete(vo);
+	public int delete(int member_id) {
+		return memberDao.delete(member_id);
 	}
-	
+
 	@Override
-	public Member update(Member vo){
-		return memberDao.update(vo);
+	public int update(Member member) {
+		return memberDao.update(member);
 	}
+
+
 }

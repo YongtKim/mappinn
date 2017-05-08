@@ -17,9 +17,9 @@ public class ScrapinController {
 	@Autowired
 	private ScrapinService scrapinService;
 	
-	@RequestMapping("selectList")
+	@RequestMapping("/selectList")
 	public ModelAndView selectList(ModelAndView mv, Member member){
-		List<Scrapin> list= scrapinService.selectList(member.getmemberid);
+		List<Scrapin> list= scrapinService.selectList(member.getMember_id());
 		System.out.println("d");
 		return mv;	
 	}

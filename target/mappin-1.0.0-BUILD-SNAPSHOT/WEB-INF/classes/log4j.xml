@@ -35,7 +35,7 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
-		<appender-ref ref="console" />
+		<appender-ref ref="console" /><!-- ref= db, file 에 저장할수도 있음 -->
 	</root>
 	
 </log4j:configuration>

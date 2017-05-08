@@ -19,7 +19,8 @@ import com.finalProject.mappin.community.model.vo.Community;
 import com.finalProject.mappin.community.model.vo.Community_img;
 import com.finalProject.mappin.community.model.vo.Likes;
 
-@Controller("community")
+@Controller
+@RequestMapping("community")
 public class CommunityController {
 
 	@Autowired
@@ -28,7 +29,7 @@ public class CommunityController {
 	private Community_imgService community_imgService;
 	private CommentsService commentsService;
 	
-	@RequestMapping("selectList")
+	@RequestMapping("/selectList")
 	private ModelAndView selectList(ModelAndView mv){
 		int currentPage = 0;
 		int limit = 0;
@@ -43,34 +44,34 @@ public class CommunityController {
 		mv.setViewName("community/cmmunity");
 		return mv;
 	}
-	@RequestMapping("detail")
-	private ModelAndView detail(ModelAndView mv, HttpRequest request, ModelMap modelMap){
-		Community community = communityService.detail(request);
-		Community_img community_img = community_imgService.detail(community.getCommunity_id());
+	@RequestMapping("/detail")
+	private ModelAndView detail(ModelAndView mv, int community_id){
+		Community community = communityService.detail(community_id);
+		List<Community_img> com_imgList = community_imgService.detailList(community_id);
 		int likes = likesService.detail(community.getCommunity_id());
 		List<Comments> comments = commentsService.selectList(community.getCommunity_id());
 		mv.addObject("community", community);
-		mv.addObject("community_img", community_img);
+		mv.addObject("com_imgList", com_imgList);
 		mv.addObject("likes", likes);
 		mv.addObject("comments", comments);
 		mv.setViewName("community/cmmunityDetail");
 		return mv;
 	}
-	@RequestMapping("insert")
+	@RequestMapping("/insert")
 	private ModelAndView insert(ModelAndView mv, Community community,  Community_img community_img){
 		int result1 = communityService.insert(community);
 		int result2 = community_imgService.insert(community_img);
 		mv.setViewName("community/cmmunity");
 		return mv;
 	}
-	@RequestMapping("delete")
+	@RequestMapping("/delete")
 	private ModelAndView delete(ModelAndView mv, Community community){
 		int result = communityService.delete(community.getCommunity_id());
 		if(result>0)
 			mv.setViewName("community/community");
 		return mv;
 	}
-	@RequestMapping("update")
+	@RequestMapping("/update")
 	private ModelAndView update(ModelAndView mv, Community community, Community_img community_img){
 		int result1 = communityService.update(community);
 		int result2 = community_imgService.update(community_img);

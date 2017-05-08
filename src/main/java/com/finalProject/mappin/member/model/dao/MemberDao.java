@@ -1,8 +1,11 @@
 package com.finalProject.mappin.member.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.finalProject.mappin.member.model.vo.Member;
 
@@ -22,23 +25,23 @@ public class MemberDao {
 		return null;
 	}
 	
-	public Member selectList(Member loginVo){
+	public List<Member> selectList(){
 		return null;
 	}
 
-	public Member detail(Member loginVo) {
-		return (Member) sqlSession.selectOne("membermapper.detail", loginVo);
-	}
-	
-	public Member insert(Member loginVo){
+	public Member detail(String member_id) {
 		return null;
 	}
 	
-	public Member delete(Member loginVo){
-		return null;
+	public int insert(Member loginVo){
+		return 0;
 	}
 	
-	public Member update(Member loginVo){
-		return null;
+	public int delete(int member_id){
+		return 0;
+	}
+	
+	public int update(Member loginVo){
+		return 0;
 	}
 }
