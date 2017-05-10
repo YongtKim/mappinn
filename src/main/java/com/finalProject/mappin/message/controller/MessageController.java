@@ -21,7 +21,7 @@ public class MessageController {
 	
 	@RequestMapping("/selectList.msg")
 	public ModelAndView selectList(String member_id, List<MsgList> msgList, ModelAndView mv){
-		msgList = (List<MsgList>) messageService.selectList(member_id);
+		msgList =  (List<MsgList>) messageService.selectList(member_id);
 		mv.addObject("msgList",msgList);
 		mv.setViewName("messageRoom");
 		return mv;

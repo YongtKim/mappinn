@@ -17,11 +17,24 @@ public class ScrapinController {
 	@Autowired
 	private ScrapinService scrapinService;
 	
-	@RequestMapping("/selectList")
-	public ModelAndView selectList(ModelAndView mv, Member member){
-		List<Scrapin> list= scrapinService.selectList(member.getMember_id());
-		System.out.println("d");
+	@RequestMapping("/selectList.scr")
+	public ModelAndView selectList(ModelAndView mv, int Member_id){
+		List<Scrapin> list= scrapinService.selectList(Member_id);
 		return mv;	
 	}
+	
+	@RequestMapping("/insert.scr")
+	public ModelAndView insert(ModelAndView mv, Scrapin scrapin){
+		int result = scrapinService.insert(scrapin);
+		return mv;	
+	}
+	
+	@RequestMapping("/delete.scr")
+	public ModelAndView delete(ModelAndView mv, Scrapin scrapin){
+		int result = scrapinService.delete(scrapin);
+		return mv;	
+	}
+	
+	
 	
 }

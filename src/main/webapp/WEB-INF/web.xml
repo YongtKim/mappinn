@@ -28,7 +28,6 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/action-servlet.xml</param-value>
-			<!-- <param-value>/WEB-INF/config/*-servlet.xml</param-value> -->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -44,13 +43,12 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/member-servlet.xml</param-value>
-			<!-- <param-value>/WEB-INF/config/*-servlet.xml</param-value> -->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>member</servlet-name>
-		<url-pattern>*.mdo</url-pattern>
+		<url-pattern>*.mo</url-pattern>
 	</servlet-mapping>
 
 	<!-- message servlet -->
@@ -60,12 +58,71 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/message-servlet.xml</param-value>
-			<!-- <param-value>/WEB-INF/config/*-servlet.xml</param-value> -->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>message</servlet-name>
 		<url-pattern>*.msg</url-pattern>
+	</servlet-mapping>
+	
+	<!-- community servlet -->
+	<servlet>
+		<servlet-name>community</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/community-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>community</servlet-name>
+		<url-pattern>*.co</url-pattern>
+	</servlet-mapping>
+	
+	<!-- news servlet -->
+	<servlet>
+		<servlet-name>news</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/news-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>news</servlet-name>
+		<url-pattern>*.no</url-pattern>
+	</servlet-mapping>
+	
+		<!-- guide servlet -->
+	<servlet>
+		<servlet-name>guide</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/guide-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>guide</servlet-name>
+		<url-pattern>*.go</url-pattern>
+	</servlet-mapping>
+	
+		<!-- traveler servlet -->
+	<servlet>
+		<servlet-name>traveler</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/traveler-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>traveler</servlet-name>
+		<url-pattern>*.to</url-pattern>
 	</servlet-mapping>
 </web-app>

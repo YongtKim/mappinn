@@ -19,7 +19,7 @@ public class NewsController {
 	@Autowired
 	private NewsService newsService;
 	
-	@RequestMapping("/selectList.do")
+	@RequestMapping("/selectList.no")
 	public ModelAndView selectList(ModelAndView mv){
 		int currentPage=0;
 		int limit=0;
@@ -29,7 +29,7 @@ public class NewsController {
 		return mv;
 	}
 	
-	@RequestMapping("/detail.do")
+	@RequestMapping("/detail.no")
 	public ModelAndView detail(ModelAndView mv, HttpRequest request){
 		News news = newsService.detail(request);
 		mv.addObject("news",news);
@@ -37,7 +37,7 @@ public class NewsController {
 		return mv;
 	}
 	
-	@RequestMapping("/insert.do")
+	@RequestMapping("/insert.no")
 	public ModelAndView insert(ModelAndView mv, News news){
 		int result = newsService.insert(news);
 		if(result>0)
@@ -45,7 +45,7 @@ public class NewsController {
 		return mv;
 	}
 	
-	@RequestMapping("/delete.do")
+	@RequestMapping("/delete.no")
 	public ModelAndView delete(ModelAndView mv, HttpRequest request){
 		int result = newsService.delete(request);
 		if(result>0)
@@ -53,7 +53,7 @@ public class NewsController {
 		return mv;
 	}
 	
-	@RequestMapping("/insert.do")
+	@RequestMapping("/insert.no")
 	public ModelAndView update(ModelAndView mv, News news){
 		int result = newsService.update(news);
 		if(result>0)

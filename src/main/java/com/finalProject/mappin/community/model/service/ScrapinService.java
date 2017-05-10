@@ -6,6 +6,10 @@ import com.finalProject.mappin.community.model.vo.Scrapin;
 
 public interface ScrapinService {
 
-	List<Scrapin> selectList(String member_id);
+	List<Scrapin> selectList(int member_id);
+
+	int delete(Scrapin scrapin);
+
+	int insert(Scrapin scrapin);
 
 }

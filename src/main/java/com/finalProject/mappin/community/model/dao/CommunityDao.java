@@ -24,8 +24,8 @@ public class CommunityDao {
 		return sqlSession.selectList("communitymapper.selectList", page);
 	}
 
-	public Community detail(HttpRequest request) {
-		return (Community) sqlSession.selectOne("communitymapper.detail", request);
+	public Community detail(int community_id) {
+		return (Community) sqlSession.selectOne("communitymapper.detail", community_id);
 	}
 
 	public int insert(Community community) {

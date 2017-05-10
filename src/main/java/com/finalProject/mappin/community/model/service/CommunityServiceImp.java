@@ -22,11 +22,6 @@ public class CommunityServiceImp implements CommunityService{
 	}
 
 	@Override
-	public Community detail(HttpRequest request) {
-		return communityDao.detail(request);
-	}
-
-	@Override
 	public int insert(Community community) {
 		return communityDao.insert(community);
 	}
@@ -39,6 +34,11 @@ public class CommunityServiceImp implements CommunityService{
 	@Override
 	public int update(Community community) {
 		return communityDao.update(community);
+	}
+
+	@Override
+	public Community detail(int community_id) {
+		return communityDao.detail(community_id);
 	}
 
 }
